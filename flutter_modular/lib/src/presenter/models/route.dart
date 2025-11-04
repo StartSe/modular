@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../navigation/transitions/transitions.dart';
-import 'package:modular_core/modular_core.dart';
 import 'package:meta/meta.dart';
+import 'package:modular_core/modular_core.dart';
 
+import '../navigation/transitions/transitions.dart';
 import 'module.dart';
 
 typedef ModularChild = Widget Function(
@@ -138,11 +138,11 @@ class ParallelRoute<T> extends ModularRouteImpl {
   final Map<
       TransitionType,
       PageRouteBuilder<T> Function(
-    Widget Function(BuildContext, ModularArguments) builder,
-    Duration transitionDuration,
-    RouteSettings settings,
-    bool maintainState,
-  )> transitions = {
+        Widget Function(BuildContext, ModularArguments) builder,
+        Duration transitionDuration,
+        RouteSettings settings,
+        bool maintainState,
+      )> transitions = {
     TransitionType.fadeIn: fadeInTransition,
     TransitionType.rightToLeft: rightToLeft,
     TransitionType.leftToRight: leftToRight,
@@ -178,6 +178,7 @@ class CustomTransition {
       transitionBuilder;
   Widget Function(BuildContext, Animation<double>, Animation<double>)?
       pageBuilder;
+  final RouteBuilder? routeBuilder;
   final Duration transitionDuration;
   final Duration reverseTransitionDuration;
   final bool opaque;
@@ -187,5 +188,6 @@ class CustomTransition {
       this.transitionDuration = const Duration(milliseconds: 300),
       this.reverseTransitionDuration = const Duration(milliseconds: 300),
       this.opaque = true,
+      this.routeBuilder,
       this.pageBuilder});
 }
