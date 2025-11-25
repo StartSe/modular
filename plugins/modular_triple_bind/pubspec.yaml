@@ -2,14 +2,20 @@ name: modular_triple_bind
 description: Smart project structure with dependency injection and route management
 version: 1.0.0
 homepage: https://github.com/Flutterando/modular
+publish_to: none
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ^3.9.0
 
 
 dependencies:
   triple: '>=1.5.0 <2.0.0'
-  flutter_modular: ">=5.0.0 <6.0.0"
+  flutter_modular:
+    git:
+      url: https://github.com/StartSe/modular.git
+      tag_pattern: v{{version}}
+      path: flutter_modular
+    version: ^5.0.4
   modular_interfaces: ">=2.0.0 <3.0.0"
   flutter:
     sdk: flutter
